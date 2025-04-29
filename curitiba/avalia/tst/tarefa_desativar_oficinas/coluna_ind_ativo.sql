@@ -1,5 +1,4 @@
 --- Adicionar coluna ind_ativo na tabela disciplina
-
 ALTER TABLE ppi.disciplina
 ADD COLUMN ind_ativo BOOLEAN DEFAULT TRUE;
 
