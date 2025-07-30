@@ -26,7 +26,7 @@ COMMENT ON TYPE ppi.situacao_upload IS
 CREATE TABLE IF NOT EXISTS ppi.tb_sessao_upload (
     id_sessao_upload   BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     id_usuario         BIGINT           NOT NULL,
-    id_arquivo         BIGINT           NOT NULL,
+    id_arquivo         BIGINT,
     id_arquivo_ref     BIGINT           UNIQUE,
     id_multipart_upload TEXT,
     bucket             TEXT             NOT NULL,

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS ppi.tb_arquivo_ref (
     id_arquivo         BIGINT         NOT NULL,
     bucket             TEXT           NOT NULL,
     object_key         TEXT           NOT NULL,
-    hash               TEXT,
+    content_hash       TEXT,
     content_type       TEXT           NOT NULL,
     tamanho_bytes      BIGINT         NOT NULL,
     largura            INTEGER,
@@ -25,7 +25,7 @@ COMMENT ON COLUMN ppi.tb_arquivo_ref.id_arquivo_ref IS 'Chave primária da refer
 COMMENT ON COLUMN ppi.tb_arquivo_ref.id_arquivo IS 'Chave estrangeira para tb_arquivo(id_arquivo)';
 COMMENT ON COLUMN ppi.tb_arquivo_ref.bucket IS 'Nome do bucket/storage onde o arquivo reside';
 COMMENT ON COLUMN ppi.tb_arquivo_ref.object_key IS 'Chave (path) do objeto dentro do bucket';
-COMMENT ON COLUMN ppi.tb_arquivo_ref.hash IS 'Hash do conteúdo (SHA-256) para verificação de integridade e deduplicação';
+COMMENT ON COLUMN ppi.tb_arquivo_ref.content_hash IS 'Hash do conteúdo (SHA-256) para verificação de integridade e deduplicação';
 COMMENT ON COLUMN ppi.tb_arquivo_ref.content_type IS 'MIME type do arquivo (ex., ''image/png'', ''video/mp4'')';
 COMMENT ON COLUMN ppi.tb_arquivo_ref.tamanho_bytes IS 'Tamanho do arquivo em bytes';
 COMMENT ON COLUMN ppi.tb_arquivo_ref.largura IS 'Largura (px) de imagens ou vídeos';
