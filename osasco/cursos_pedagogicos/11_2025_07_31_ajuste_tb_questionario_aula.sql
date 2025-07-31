@@ -21,7 +21,7 @@ DO $$ BEGIN
         ON UPDATE NO ACTION;
     COMMENT ON CONSTRAINT fk_tb_aula_tb_questionario_aula
         ON ppi_curso.tb_questionario_aula
-        IS '🔗 Aula → QuestionarioAula (cascade na exclusão)';
+        IS 'Aula → QuestionarioAula (cascade na exclusão)';
 END $$;
 
 /*--------------------------------------------------------------
@@ -31,6 +31,6 @@ CREATE UNIQUE INDEX IF NOT EXISTS uk_questionario_id_aula
     ON ppi_curso.tb_questionario_aula(id_aula);
 
 COMMENT ON INDEX uk_questionario_id_aula
-    IS '⚙️  Garante que cada Aula tenha no máximo 1 QuestionarioAula';
+    IS 'Garante que cada Aula tenha no máximo 1 QuestionarioAula';
 
 COMMIT;

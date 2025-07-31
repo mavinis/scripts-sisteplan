@@ -19,7 +19,7 @@ ALTER TABLE ppi_curso.tb_anexo_aula
     ADD COLUMN IF NOT EXISTS id_aula BIGINT;
 
 COMMENT ON COLUMN ppi_curso.tb_anexo_aula.id_aula
-    IS '🔗 Aula à qual o anexo pertence';
+    IS 'Aula à qual o anexo pertence';
 
 DO $$ BEGIN
     IF EXISTS (SELECT 1 FROM pg_constraint
@@ -34,7 +34,7 @@ DO $$ BEGIN
         ON DELETE CASCADE
         ON UPDATE NO ACTION;
     COMMENT ON CONSTRAINT fk_anexo_aula_aula ON ppi_curso.tb_anexo_aula
-        IS '🔗 Anexo → Aula (cascade na exclusão)';
+        IS 'Anexo → Aula (cascade na exclusão)';
 END $$;
 
 /*--------------------------------------------------------------
@@ -44,7 +44,7 @@ ALTER TABLE ppi_curso.tb_anexo_aula
     ADD COLUMN IF NOT EXISTS id_arquivo BIGINT;
 
 COMMENT ON COLUMN ppi_curso.tb_anexo_aula.id_arquivo
-    IS '🔗 Arquivo físico associado (1:1)';
+    IS 'Arquivo físico associado (1:1)';
 
 DO $$ BEGIN
     IF EXISTS (SELECT 1 FROM pg_constraint
@@ -59,7 +59,7 @@ DO $$ BEGIN
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
     COMMENT ON CONSTRAINT fk_anexo_aula_arquivo ON ppi_curso.tb_anexo_aula
-        IS '🔗 Anexo → Arquivo (sem cascata de exclusão)';
+        IS 'Anexo → Arquivo (sem cascata de exclusão)';
 END $$;
 
 /*--------------------------------------------------------------
@@ -69,6 +69,6 @@ CREATE UNIQUE INDEX IF NOT EXISTS uk_anexo_aula_id_arquivo
     ON ppi_curso.tb_anexo_aula(id_arquivo);
 
 COMMENT ON INDEX uk_anexo_aula_id_arquivo
-    IS '⚙️  Cada Arquivo pode ser usado em apenas 1 AnexoAula';
+    IS 'Cada Arquivo pode ser usado em apenas 1 AnexoAula';
 
 COMMIT;

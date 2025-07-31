@@ -29,10 +29,10 @@ ALTER TABLE ppi_curso.tb_video_aula
     ADD COLUMN IF NOT EXISTS id_arquivo BIGINT;      -- FK arquivo
 
 COMMENT ON COLUMN ppi_curso.tb_video_aula.duracao_ms
-    IS '⚙️  Duração do vídeo em milissegundos';
+    IS 'Duração do vídeo em milissegundos';
 
 COMMENT ON COLUMN ppi_curso.tb_video_aula.id_arquivo
-    IS '⚙️  FK para tb_arquivo (arquivo físico do vídeo)';
+    IS 'FK para tb_arquivo (arquivo físico do vídeo)';
 
 /*--------------------------------------------------------------
   2.3  FK para tb_arquivo
@@ -47,7 +47,7 @@ DO $$ BEGIN
             ON UPDATE NO ACTION
             ON DELETE NO ACTION;
         COMMENT ON CONSTRAINT fk_video_aula_arquivo ON ppi_curso.tb_video_aula
-            IS '🔗 Vídeo → Arquivo (sem cascata de exclusão)';
+            IS 'Vídeo → Arquivo (sem cascata de exclusão)';
     END IF;
 END $$;
 
@@ -67,7 +67,7 @@ DO $$ BEGIN
         ON DELETE CASCADE
         ON UPDATE NO ACTION;
     COMMENT ON CONSTRAINT fk_tb_aula_tb_video_aula ON ppi_curso.tb_video_aula
-        IS '🔗 Aula → Vídeo (cascade na exclusão)';
+        IS 'Aula → Vídeo (cascade na exclusão)';
 END $$;
 
 /*--------------------------------------------------------------
@@ -77,6 +77,6 @@ CREATE UNIQUE INDEX IF NOT EXISTS uk_videoaula_id_aula
     ON ppi_curso.tb_video_aula(id_aula);
 
 COMMENT ON INDEX uk_videoaula_id_aula
-    IS '⚙️  Garante que cada Aula tenha no máximo 1 VideoAula';
+    IS 'Garante que cada Aula tenha no máximo 1 VideoAula';
 
 COMMIT;
